@@ -1,0 +1,112 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>NBA drafting</title>
+    <style>
+        #container{
+            width: 90%;
+            margin: auto;
+            display: grid;
+            grid-template-columns: repeat(5,1fr);
+            gap: 15px;
+            row-gap: 20px;
+            text-align: center;
+        }
+        #container>div{
+            border: 1px solid black;
+            padding: 20px;
+        }
+        #searchDiv{
+            width: 16%;
+            margin-bottom: 20px;
+        }
+        #searchDiv>input{
+            width: 90%;
+            height: 30px;
+        }
+        #searchDiv>input+button{
+            padding: 7px 10px;
+            border: 0;
+            background-color: green;
+            margin-top: 10px;
+            border-radius: 8px;
+            cursor: pointer;
+            color: white;
+        }
+        #pagiDiv{
+            display: flex;
+            gap: 5px;
+            height: 100%;
+        }
+        #pagiDiv>button{
+            cursor: pointer;
+        }
+        #topDiv{
+            display: flex;
+            justify-content: space-between;
+        }
+        #modal{
+            display: none;
+            position: absolute;
+            top: 10%;
+            width:30%;
+            left: 30%;
+            padding: 20px;
+            background-color: rgb(241, 230, 230);
+        }
+        #navbar{
+            display: flex;
+            gap: 50px;
+            justify-content: center;
+            padding: 10px 20px;
+            background-color: aquamarine;
+            margin-bottom: 15px;
+            
+        }
+        #navbar>a{
+            text-decoration: none;
+            font-size: 20px;
+        }
+        
+    </style>
+</head>
+<body>
+    <div>
+        <div id="navbar">
+            <a href="index.html">Players Page</a>
+            <a href="games.html">Games Page</a>
+        </div>
+        <div id="topDiv">
+            <div id="searchDiv">
+                <input id="search" type="text" placeholder="Search Player by Name" >
+                <button id="buton">Search</button>
+            </div>
+            <div id="pagiDiv">
+                <button>1</button>
+                <button>2</button>
+                <button>3</button>
+                <button>4</button>
+                <button>5</button>
+                <button>6</button>
+                <button>7</button>
+                <button>8</button>
+                <button>9</button>
+                <button>10</button>
+            </div>
+        </div>
+        
+        <div id="container">
+
+        </div>
+        <div id="modal">
+            
+        </div>
+       
+    </div>
+</body>
+</html>
+<script src="index.js">
+</script>
