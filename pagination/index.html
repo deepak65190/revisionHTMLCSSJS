@@ -1,0 +1,101 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+#pagination-container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 100%;
+}
+
+#pagination {
+  display: flex;
+}
+
+.page-number {
+  width: 30px;
+  height: 30px;
+  border: 1px solid black;
+  border-radius: 50%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin: 0 10px;
+  cursor: pointer;
+}
+
+.active {
+  background-color: lightblue;
+}
+    </style>
+</head>
+<body>
+    <div id="pagination-container">
+  <div id="pagination"></div>
+  <div id="data"></div>
+</div>
+</body>
+</html>
+<script>
+    const data = [
+  { id: 1, name: "Item 1" },
+  { id: 2, name: "Item 2" },
+  { id: 3, name: "Item 3" },
+
+]
+
+const itemsPerPage = 10;
+
+const paginationContainer = document.querySelector("#pagination-container");
+const pagination = document.querySelector("#pagination");
+const dataContainer = document.querySelector("#data");
+
+let currentPage = 1;
+
+const renderData = pageNumber => {
+  dataContainer.innerHTML = "";
+
+  const startIndex = (pageNumber - 1) * itemsPerPage;
+  const endIndex = startIndex + itemsPerPage;
+  const currentData = data.slice(startIndex, endIndex);
+
+  currentData.forEach(item => {
+    const itemElement = document.createElement("div");
+    itemElement.innerHTML = item.name;
+    dataContainer.appendChild(itemElement);
+  });
+};
+
+const renderPagination = () => {
+  pagination.innerHTML = "";
+
+  const pageNumbers = Array.from({ length: Math.ceil(data.length / itemsPerPage) }, (_, i) => i + 1);
+
+  pageNumbers.forEach(pageNumber => {
+    const pageNumberElement = document.createElement("div");
+    pageNumberElement.classList.add("page-number");
+    pageNumberElement.innerHTML = pageNumber;
+
+    if (pageNumber === currentPage) {
+      pageNumberElement.classList.add("active");
+    }
+
+    pageNumberElement.addEventListener("click", () => {
+      currentPage = pageNumber;
+      renderData(currentPage);
+      renderPagination();
+    });
+
+    pagination.appendChild(pageNumberElement);
+  });
+};
+
+renderData(currentPage);
+renderPagination();
+
+</script>
